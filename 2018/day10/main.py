@@ -5,6 +5,7 @@ def main() :
   positions = []
   velocities = []
   win = GraphWin("Hej", 2000, 1500)
+  win.setBackground("black")
 
   with open("input.txt") as f:
     for line in f:
@@ -16,17 +17,14 @@ def main() :
       yVel = int(line[39:42])
       velocities.append([xVel,yVel])
 
-  te = 0
-
   for t in range(1,10392):
     for i in range(0,len(positions)):
       positions[i][0] += velocities[i][0]
       positions[i][1] += velocities[i][1]
-      if(positions[0][0]-positions[1][0] > 3):
-        te = t
-      if (t > 10390 and t % 1 == 0):
+
+      if (t > 10360 and t % 1 == 0):
         circle = Circle(Point(positions[i][0]*10-1000,positions[i][1]*10-700), 2)
-        circle.setFill("black")
+        circle.setFill("white")
         circle.draw(win)
         #x = round((positions[i][0]+525000)*0.0182)
         #y = round((positions[i][1]+55000)*0.0136)
@@ -34,13 +32,11 @@ def main() :
         #x = round((positions[i][0]+2000)*0.5)
         #y = round((positions[i][1]+2000)*0.375)
 
-
-
-
   for i in range(0,len(positions)):
-    print(positions[i][0],positions[i][1])
+    circle = Circle(Point(positions[i][0]*10-1000,positions[i][1]*10-700), 3)
+    circle.setFill("red")
+    circle.draw(win)
 
-  print(te)
   win.getMouse()
 
 
