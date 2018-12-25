@@ -15,12 +15,6 @@ int main()
   } else {
     string s = "";
     string ids [250] = { };
-    int doubbleCount = 0;
-    int trippleCount = 0;
-    int asd = 1;
-    int hasDouble;
-    int hasTripple;
-    int foundCount;
 
     int length = 0;
     while (inputFile >> s) {
@@ -28,11 +22,25 @@ int main()
       length++;
     }
 
-    for(int j = 0; j < length - 1; j++) {
-      cout << strcmp(ids[j], ids[j+1]);
+    for(int i = 0; i < length - 1; i++) {
+      string id = ids[i];
+      for(int j = i; j < length; j++) {
+        string compId = ids[j];
+        int wrongCount = 0;
+
+        for(int k = 0; k < 26; k++) {
+          if (id[k] != compId[k]) {
+            wrongCount++;
+          }
+        }
+
+        if (wrongCount == 1) {
+          cout << id << "\n";
+          cout << compId << "\n";
+        }
+      }
     }
 
-    cout << doubbleCount*trippleCount << "\n";
   }
   return 0;
 }
