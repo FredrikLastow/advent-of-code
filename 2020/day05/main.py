@@ -12,6 +12,7 @@ def main():
 			c = get_final_idx(c_rng, seat[7:], 'R', 'L')
 		
 			seat_ids.append(r*8+c)
+			
 	print("max seat id:", max(seat_ids))
 	seat_ids = sorted(seat_ids)
 	seat_rng = list(range(min(seat_ids), max(seat_ids) + 1))
